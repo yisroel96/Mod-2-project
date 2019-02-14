@@ -1,0 +1,8 @@
+<h1>show favorites</h1>
+
+
+<% @favorites.each do |favorite| %>
+<li><%= link_to favorite.name, favorite %></li>
+
+
+<% end %>

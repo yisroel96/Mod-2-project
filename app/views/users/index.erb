@@ -1,0 +1,5 @@
+<h1>What would you like to do?</h1>
+
+<% @fighters.each do |fighter| %>
+<li><%= link_to fighter.name, fighter %></li>
+<% end %>

@@ -1,0 +1,5 @@
+
+<h1> This Fighter Is Favorited By You </h1>
+<%= @fav_user.name %><br>
+
+<%= button_to("Destroy", `/favorites/#{@favorite.id}`, method: :delete)%>

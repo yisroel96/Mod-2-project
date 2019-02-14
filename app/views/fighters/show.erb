@@ -1,0 +1,20 @@
+<h1>Show me the fighters</h1>
+
+<tr>
+<strong>NAME:</strong> <%= @fighter.name %><br>
+<strong>NICKNAME:</strong> <%= @fighter.nickname %><br>
+<strong>WEIGHTCLASS:</strong> <%= @fighter.weight_class %><br>
+<strong>COUNTRY:</strong> <%= @fighter.country %><br>
+<strong>HOME:</strong> <%= @fighter.home %><br>
+</tr>
+
+<%= button_to "Like", create_a_favorite_path(@fighter), method: :post %>
+
+<%= form_for @comment do |f| %>
+<%= f.text_field :content %>
+<%= f.submit %>
+<% end %>
+
+
+
+<%= link_to("Destroy", fighter_path, method: :delete)%>
