@@ -30,6 +30,10 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
   end
 
+  def favorite
+    @user = User.find(params[:user_id])
+  end
+
 
   private
 

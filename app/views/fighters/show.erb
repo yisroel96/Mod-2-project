@@ -6,15 +6,26 @@
 <strong>WEIGHTCLASS:</strong> <%= @fighter.weight_class %><br>
 <strong>COUNTRY:</strong> <%= @fighter.country %><br>
 <strong>HOME:</strong> <%= @fighter.home %><br>
+<strong>COMMENTS:</strong> <%= @comment.content %><br>
 </tr>
 
-<%= button_to "Like", create_a_favorite_path(@fighter), method: :post %>
-
-<%= form_for @comment do |f| %>
-<%= f.text_field :content %>
-<%= f.submit %>
+<% @fighter.comments.each do |comment|%>
+<%= comment.content %>
 <% end %>
 
+<%= form_for @fighter.comments.build do |f| %>
+<%= f.text_field :content %>
+<%= f.hidden_field :user_id, value: 1  %>
+<%= f.hidden_field :fighter_id, value: @fighter.id  %>
+<%= f.submit  %>
+<% end %>
 
+<%= form_for @favorite do |f| %>
+<%= f.hidden_field :name, value: @fighter.name %>
+<%= f.hidden_field :user_id, value: 1 %>
+<%= f.hidden_field :fighter_id, value: @fighter.id%>
+<%= f.submit "Add To Favorites"%>
+<% end %>
 
-<%= link_to("Destroy", fighter_path, method: :delete)%>
+<h1><%= button_to("Edit", fighter_path, method: :edit)%></h1>
+<h1><%= button_to("DESTROY", fighter_path, method: :delete)%></h1>

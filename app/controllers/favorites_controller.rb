@@ -12,9 +12,12 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    # fighters/:id/favourites
-    @favorite = Favorite.create(user_id: 1, fighter_id: params[:fighter_id] )
-    # redirect_to fighter_path(params[:fighter_id])
+    @fighter = Fighter.find(params[:favorite][:fighter_id])
+    @favorite = Favorite.create(favorite_params)
+
+
+    # @favorite = Favorite.create(user_id: params[:user_id], fighter_id: params[:fighter_id] )
+
     redirect_to favorites_path
   end
 
@@ -22,6 +25,12 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     @favorite.delete
     redirect_to favorites_path
+  end
+
+  private
+
+  def favorite_params
+    params.require(:favorite).permit(:name, :user_id, :fighter_id)
   end
 
 end

@@ -1,0 +1,6 @@
+<h1>User favorites</h1>
+<ul>
+<% @user.fighters.each do |fighter| %>
+<li><%=link_to fighter.name, fighter %></li>
+<% end %>
+</ul>
